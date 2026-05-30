@@ -1,0 +1,80 @@
+{
+  "tableName": "visitors",
+
+  "primaryKey": "id",
+
+  "auditColumns": false,
+
+  "fieldName": ["id", "name", "email", "phone"],
+
+  "fieldValidation": [
+    {
+      "name": "id",
+      "type": "string",
+      "constraints": {
+        "primaryKey": true,
+        "autoGenerate": true,
+        "required": true
+      }
+    },
+
+    {
+      "name": "name",
+      "type": "string",
+      "constraints": {
+        "required": true,
+        "maxLength": 100,
+        "trim": true
+      }
+    },
+
+    {
+      "name": "email",
+      "type": "string",
+      "constraints": {
+        "required": false,
+        "unique": true,
+        "maxLength": 100,
+        "lowercase": true,
+        "trim": true
+      }
+    },
+
+    {
+      "name": "phone",
+      "type": "string",
+      "constraints": {
+        "required": false,
+        "unique": true,
+        "maxLength": 20,
+        "trim": true
+      }
+    }
+  ],
+
+  "fieldNameLookup": {
+    "id": "id",
+    "text": "name||' - '||COALESCE(phone, '-') as display_text"
+  },
+
+  "datatablesQuery": "file:query/visitors-datatables.sql",
+
+  "datatablesWhere": ["name", "email", "phone"],
+
+  "action": {
+    "datatables": true,
+    "create": true,
+    "update": true,
+    "delete": true,
+    "first": true,
+    "lookup": true,
+    "read": true,
+    "export": false,
+    "import": false,
+    "adjust": false,
+    "aggregate": false,
+    "createComposite": false,
+    "updateComposite": false,
+    "readComposite": false
+  }
+}

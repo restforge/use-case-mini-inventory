@@ -1,0 +1,47 @@
+{
+    "version": "2.0",
+    "processor": [
+        {
+            "name": "stock-card",
+            "method": "POST",
+            "cache": {
+                "enabled": true,
+                "ttl": 300,
+                "invalidates": ["stock_inbound", "stock_outbound", "stock_beginning_balance", "item_product"]
+            },
+            "description": "Menampilkan kartu stok (riwayat pergerakan) sebuah produk",
+            "sql": {
+                "query": "SELECT * FROM item_product WHERE item_product_id = $1",
+                "params": [
+                    "item_product_id"
+                ]
+            },
+            "request": {
+                "body": {
+                    "item_product_id": {
+                        "type": "string",
+                        "required": true
+                    },
+                    "warehouse_id": {
+                        "type": "string"
+                    },
+                    "start_date": {
+                        "type": "date",
+                        "required": true
+                    },
+                    "end_date": {
+                        "type": "date",
+                        "required": true
+                    }
+                }
+            },
+            "response": {
+                "message": {
+                    "success": "Data kartu stok berhasil diambil",
+                    "empty": "Tidak ada data pergerakan stok ditemukan",
+                    "error": "Gagal mengambil data kartu stok"
+                }
+            }
+        }
+    ]
+}

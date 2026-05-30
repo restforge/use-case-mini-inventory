@@ -1,0 +1,76 @@
+{
+  "appConfig": {
+    "appName": "Mini Inventory",
+    "appCode": "mini-inventory",
+    "plugin": "vanilla-js-auth",
+    "apiBaseUrl": "http://localhost:3032/api/mini-inventory",
+    "port": 8000,
+    "numberFormat": {
+      "locale": "en-US",
+      "currencyPrefix": "Rp ",
+      "decimalPlaces": 0
+    }
+  },
+  "homepage": "dashboard-outbound",
+  "auth": {
+    "appCode": "K5BK0H3ATT",
+    "authApiUrl": "https://restforge.dev/api/auth",
+    "idleTimeoutMinutes": 30
+  },
+  "permissions": {
+    "category": {
+      "read": "CATEGORY_READ",
+      "create": "CATEGORY_CREATE",
+      "update": "CATEGORY_UPDATE",
+      "delete": "CATEGORY_DELETE"
+    },
+    "warehouse": {
+      "read": "WAREHOUSE_READ",
+      "create": "WAREHOUSE_CREATE",
+      "update": "WAREHOUSE_UPDATE",
+      "delete": "WAREHOUSE_DELETE"
+    },
+    "supplier": {
+      "read": "SUPPLIER_READ",
+      "create": "SUPPLIER_CREATE",
+      "update": "SUPPLIER_UPDATE",
+      "delete": "SUPPLIER_DELETE"
+    },
+    "customer": {
+      "read": "CUSTOMER_READ",
+      "create": "CUSTOMER_CREATE",
+      "update": "CUSTOMER_UPDATE",
+      "delete": "CUSTOMER_DELETE"
+    },
+    "item-product": {
+      "read": "ITEM_PRODUCT_READ",
+      "create": "ITEM_PRODUCT_CREATE",
+      "update": "ITEM_PRODUCT_UPDATE",
+      "delete": "ITEM_PRODUCT_DELETE"
+    },
+    "stock-inbound": {
+      "read": "STOCK_INBOUND_READ",
+      "create": "STOCK_INBOUND_CREATE",
+      "update": "STOCK_INBOUND_UPDATE",
+      "delete": "STOCK_INBOUND_DELETE"
+    },
+    "stock-outbound": {
+      "read": "STOCK_OUTBOUND_READ",
+      "create": "STOCK_OUTBOUND_CREATE",
+      "update": "STOCK_OUTBOUND_UPDATE",
+      "delete": "STOCK_OUTBOUND_DELETE"
+    }
+  },
+  "navigation": {
+    "items": [
+      { "pageRef": "category", "label": "Category", "icon": "category" },
+      { "pageRef": "warehouse", "label": "Warehouse", "icon": "home-2" },
+      { "pageRef": "supplier", "label": "Supplier", "icon": "people" },
+      { "pageRef": "customer", "label": "Customer", "icon": "book" },
+      { "pageRef": "item-product", "label": "Item Product", "icon": "package" },
+      { "pageRef": "stock-inbound", "label": "Stock Inbound", "icon": "dropbox" },
+      { "pageRef": "stock-outbound", "label": "Stock Outbound", "icon": "exit-up" },
+      { "pageRef": "dashboard-outbound", "label": "Dashboard Outbound", "icon": "chart-pie-simple", "type": "page" }
+    ]
+  }
+}

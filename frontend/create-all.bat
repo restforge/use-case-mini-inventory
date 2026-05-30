@@ -1,0 +1,1 @@
+restforge-designer generate --payload=payload/all-pages.json --output=./mini-inventory --scope app --overwrite

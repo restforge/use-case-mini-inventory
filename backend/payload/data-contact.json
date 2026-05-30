@@ -1,0 +1,62 @@
+{
+    "tableName": "data_contact",
+    "primaryKey": "data_contact_id",
+    "fieldName": [
+        "data_contact_id",
+        "contact_code",
+        "contact_name",
+        "address"
+    ],
+    "action": {
+        "datatables": true,
+        "create": true,
+        "update": true,
+        "delete": true,
+        "first": true,
+        "lookup": true,
+        "read": true
+    },
+    "datatablesQuery": "SELECT data_contact_id, contact_code, contact_name, address FROM data_contact",
+    "datatablesWhere": [
+        "contact_code",
+        "contact_name",
+        "address",
+        "all"
+    ],
+    "fieldValidation": [
+        {
+            "name": "data_contact_id",
+            "type": "uuid",
+            "constraints": {
+                "primaryKey": true,
+                "autoGenerate": true
+            }
+        },
+        {
+            "name": "contact_code",
+            "type": "string",
+            "constraints": {
+                "required": true,
+                "unique": true,
+                "maxLength": 50,
+                "trim": true,
+                "uppercase": true
+            }
+        },
+        {
+            "name": "contact_name",
+            "type": "string",
+            "constraints": {
+                "required": true,
+                "maxLength": 200
+            }
+        },
+        {
+            "name": "address",
+            "type": "string",
+            "constraints": {
+                "maxLength": 500
+            }
+        }
+    ]
+}

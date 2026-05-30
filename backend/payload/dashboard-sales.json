@@ -1,0 +1,19 @@
+{
+  "widgets": [
+    {
+      "id": "author_sales",
+      "query": "file:query/dashboard-sales/author-sales.sql"
+    },
+    {
+      "id": "sales_statistics",
+      "query": "file:query/dashboard-sales/sales-statistics.sql"
+    },
+    {
+      "id": "sales_this_months",
+      "queries": {
+        "value": "file:query/dashboard-sales/sales-this-months-value.sql",
+        "points": "file:query/dashboard-sales/sales-this-months-points.sql"
+      }
+    }
+  ]
+}

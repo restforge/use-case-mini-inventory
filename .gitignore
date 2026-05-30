@@ -1,0 +1,11 @@
+# === backend ===
+/backend/examples/
+/backend/logs/
+/backend/metadata/
+/backend/node_modules/
+/backend/src/
+/backend/package.json
+/backend/package-lock.json
+
+# === frontend ===
+/frontend/mini-inventory/

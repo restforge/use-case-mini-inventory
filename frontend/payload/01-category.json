@@ -1,0 +1,71 @@
+{
+  "extends": "app-config.json",
+  "pages": [
+    {
+      "pageId": "category",
+      "pageTitle": "Master Category",
+      "pageSubject": "Category",
+      "pageSubtitle": "Kelola data kategori produk",
+      "pageIcon": "category",
+      "apiPath": "category",
+      "primaryKey": "category_id",
+      "displayField": "category_name",
+      "features": {
+        "enableSearch": true,
+        "enableStatusFilter": true,
+        "statusFilter": {
+          "field": "is_active",
+          "label": "Status",
+          "width": "150px",
+          "options": [
+            {"value": "true", "text": "Active"},
+            {"value": "false", "text": "Inactive"}
+          ]
+        },
+        "fieldLayout": "vertical"
+      },
+      "fields": [
+        {
+          "name": "category_code",
+          "label": "Kode Kategori",
+          "type": "text",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 1,
+          "maxlength": 20,
+          "placeholder": "CAT001"
+        },
+        {
+          "name": "category_name",
+          "label": "Nama Kategori",
+          "type": "text",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 2,
+          "maxlength": 100,
+          "placeholder": "Masukkan nama kategori"
+        },
+        {
+          "name": "description",
+          "label": "Deskripsi",
+          "type": "textarea",
+          "rows": 3,
+          "maxlength": 500,
+          "placeholder": "Deskripsi singkat kategori"
+        },
+        {
+          "name": "is_active",
+          "label": "Status",
+          "type": "checkbox",
+          "inTable": true,
+          "tableOrder": 3,
+          "defaultValue": true,
+          "checkboxText": {
+            "checked": "Active",
+            "unchecked": "Inactive"
+          }
+        }
+      ]
+    }
+  ]
+}

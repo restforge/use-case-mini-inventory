@@ -1,0 +1,123 @@
+{
+  "extends": "app-config.json",
+  "pages": [
+    {
+      "pageId": "warehouse",
+      "pageTitle": "Master Warehouse",
+      "pageSubject": "Warehouse",
+      "pageSubtitle": "Kelola data gudang dan lokasi penyimpanan",
+      "pageIcon": "home-2",
+      "apiPath": "warehouse",
+      "primaryKey": "warehouse_id",
+      "displayField": "warehouse_name",
+      "drawerWidth": "600px",
+      "features": {
+        "enableSearch": true,
+        "enableStatusFilter": true,
+        "statusFilter": {
+          "field": "is_active",
+          "label": "Status",
+          "width": "150px",
+          "options": [
+            {"value": "true", "text": "Active"},
+            {"value": "false", "text": "Inactive"}
+          ]
+        },
+        "enableDataFilter": true,
+        "dataFilters": [
+          {
+            "name": "warehouse_type",
+            "label": "Tipe",
+            "width": "180px",
+            "dataSource": {
+              "type": "static",
+              "options": [
+                { "value": "main", "text": "Main" },
+                { "value": "transit", "text": "Transit" },
+                { "value": "consignment", "text": "Consignment" },
+                { "value": "external", "text": "External" }
+              ]
+            }
+          }
+        ],
+        "fieldLayout": "horizontal"
+      },
+      "fields": [
+        {
+          "name": "warehouse_code",
+          "label": "Kode Gudang",
+          "type": "text",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 1,
+          "maxlength": 20,
+          "placeholder": "WH001"
+        },
+        {
+          "name": "warehouse_name",
+          "label": "Nama Gudang",
+          "type": "text",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 2,
+          "maxlength": 255,
+          "placeholder": "Masukkan nama gudang"
+        },
+        {
+          "name": "warehouse_type",
+          "label": "Tipe Gudang",
+          "type": "select",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 3,
+          "dataSource": {
+            "type": "static",
+            "options": [
+              { "value": "main", "text": "Main" },
+              { "value": "transit", "text": "Transit" },
+              { "value": "consignment", "text": "Consignment" },
+              { "value": "external", "text": "External" }
+            ]
+          }
+        },
+        {
+          "name": "address",
+          "label": "Alamat",
+          "type": "textarea",
+          "rows": 3,
+          "placeholder": "Alamat lengkap gudang"
+        },
+        {
+          "name": "city",
+          "label": "Kota",
+          "type": "text",
+          "inTable": true,
+          "tableOrder": 4,
+          "maxlength": 100,
+          "placeholder": "Nama kota"
+        },
+        {
+          "name": "capacity",
+          "label": "Kapasitas (m²)",
+          "type": "number",
+          "inTable": true,
+          "tableOrder": 5,
+          "min": 0,
+          "placeholder": "0"
+        },
+        {
+          "name": "is_active",
+          "label": "Status",
+          "type": "checkbox",
+          "inTable": true,
+          "tableOrder": 6,
+          "defaultValue": true,
+          "checkboxText": {
+            "checked": "Active",
+            "unchecked": "Inactive"
+          }
+        }
+      ]
+    }
+  ]
+}

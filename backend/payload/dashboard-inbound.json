@@ -1,0 +1,19 @@
+{
+  "params": {
+    "year": { "type": "number", "required": true }
+  },
+  "widgets": [
+    {
+      "id": "inbound_by_supplier",
+      "query": "file:query/dashboard-inbound/inbound-by-supplier.sql"
+    },
+    {
+      "id": "inbound_by_product",
+      "query": "file:query/dashboard-inbound/inbound-by-product.sql"
+    },
+    {
+      "id": "inbound_by_category",
+      "query": "file:query/dashboard-inbound/inbound-by-category.sql"
+    }
+  ]
+}

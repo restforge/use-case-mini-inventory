@@ -1,0 +1,104 @@
+{
+    "tableName": "stock_inbound",
+    "primaryKey": "stock_inbound_id",
+    "fieldName": [
+        "stock_inbound_id",
+        "inbound_number",
+        "inbound_date",
+        "warehouse_id",
+        "supplier_id",
+        "reference_number",
+        "notes",
+        "total_items",
+        "total_qty",
+        "total_amount",
+        "status"
+    ],
+    "datatablesQuery": "file:query/stock-inbound-datatables.sql",
+    "datatablesWhere": [
+        "inbound_number",
+        "warehouse_code",
+        "warehouse_name",
+        "supplier_code",
+        "supplier_name",
+        "reference_number",
+        "status",
+        "all"
+    ],
+    "action": {
+        "datatables": true,
+        "create": true,
+        "update": true,
+        "delete": true,
+        "first": true,
+        "lookup": true,
+        "read": true,
+        "createComposite": true,
+        "updateComposite": true,
+        "readComposite": true,
+        "workflow": false
+    },
+    "workflow": {
+        "statusField": "status",
+        "transitions": {
+            "draft": ["confirmed", "cancelled"],
+            "confirmed": ["closed", "cancelled"],
+            "closed": [],
+            "cancelled": ["draft"]
+        }        
+    },
+    "masterDetail": {
+        "enabled": true,
+        "detailTable": "stock_inbound_item",
+        "foreignKey": "stock_inbound_id",
+        "detailConfig": {
+            "tableName": "stock_inbound_item",
+            "primaryKey": "stock_inbound_item_id",
+            "fieldName": [
+                "stock_inbound_item_id",
+                "stock_inbound_id",
+                "line_number",
+                "item_product_id",
+                "qty_received",
+                "uom",
+                "unit_price",
+                "total_amount",
+                "notes"
+            ],
+            "detailQuery": "file:query/stock-inbound-detailquery.sql",
+            "requiredFields": [
+                "line_number",
+                "item_product_id",
+                "qty_received",
+                "uom",
+                "unit_price"
+            ],
+            "autoCalculateFields": {
+                "total_amount": {
+                    "type": "calculated",
+                    "formula": "qty_received * unit_price",
+                    "description": "Auto-calculated by database (GENERATED COLUMN)"
+                }
+            }
+        },
+        "headerCalculations": {
+            "total_items": {
+                "type": "count",
+                "source": "items.length",
+                "description": "Total number of distinct items"
+            },
+            "total_qty": {
+                "type": "sum",
+                "source": "items.qty_received",
+                "description": "Sum of all qty_received from items"
+            },
+            "total_amount": {
+                "type": "sum",
+                "source": "items.total_amount",
+                "description": "Sum of all total_amount from items"
+            }
+        },
+        "cascadeDelete": true,
+        "transactionMode": "required"
+    }
+}

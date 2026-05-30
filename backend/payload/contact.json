@@ -1,0 +1,56 @@
+{
+    "tableName": "contact",
+    "primaryKey": "contact_id",
+    "fieldName": [
+        "contact_id",
+        "contact_code",
+        "contact_name",
+        "contact_type",
+        "email",
+        "phone",
+        "address",
+        "city",
+        "country",
+        "is_active"
+    ],
+    "datatablesQuery": "file:query/contact-datatables.sql",
+    "datatablesWhere": [
+        "contact_code",
+        "contact_name",
+        "contact_type",
+        "email",
+        "phone",
+        "address",
+        "city",
+        "country",
+        "is_active",
+        "all"
+    ],
+    "action": {
+        "datatables": true,
+        "create": true,
+        "update": true,
+        "delete": true,
+        "first": true,
+        "lookup": true,
+        "read": true
+    },
+    "fieldValidation": [
+        {
+            "name": "contact_id",
+            "type": "string",
+            "constraints": {
+                "primaryKey": true,
+                "autoGenerate": true,
+                "required": true
+            }
+        },
+        {
+            "name": "is_active",
+            "type": "boolean",
+            "constraints": {
+                "default": true
+            }
+        }
+    ]
+}

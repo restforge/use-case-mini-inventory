@@ -1,0 +1,226 @@
+{
+  "extends": "app-config.json",
+  "pages": [
+    {
+      "pageId": "stock-inbound",
+      "pageTitle": "Stock Inbound",
+      "pageSubject": "Inbound",
+      "pageSubtitle": "Kelola transaksi penerimaan stok",
+      "pageIcon": "dropbox",
+      "apiPath": "stock-inbound",
+      "primaryKey": "stock_inbound_id",
+      "displayField": "inbound_number",
+      "features": {
+        "enableSearch": true,
+        "enableStatusFilter": true,
+        "statusFilter": {
+          "field": "status",
+          "label": "Status",
+          "width": "140px",
+          "options": [
+            { "value": "draft", "text": "Draft" },
+            { "value": "confirmed", "text": "Confirmed" },
+            { "value": "cancelled", "text": "Cancelled" }
+          ]
+        },
+        "fieldLayout": "vertical",
+        "enableDataFilter": true,
+        "dataFilters": [
+          {
+            "name": "supplier_id",
+            "field": "supplier_id",
+            "label": "Supplier",
+            "width": "200px",
+            "display": "dropdown",
+            "dataSource": {
+              "type": "api",
+              "resource": "supplier",
+              "select": ["supplier_id", "supplier_name"]
+            }
+          }
+        ]
+      },
+      "fields": [
+        {
+          "name": "inbound_number",
+          "label": "Inbound Number",
+          "type": "text",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 1,
+          "maxlength": 50,
+          "placeholder": "INB/2026/001",
+          "unique": true,
+          "textCase": "uppercase"
+        },
+        {
+          "name": "inbound_date",
+          "label": "Inbound Date",
+          "type": "date",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 2,
+          "dateFormat": "dd/mm/yyyy"
+        },
+        {
+          "name": "warehouse_id",
+          "label": "Warehouse",
+          "type": "select",
+          "required": true,
+          "dataSource": {
+            "type": "api",
+            "resource": "warehouse",
+            "select": ["warehouse_id", "warehouse_name"]
+          }
+        },
+        {
+          "name": "supplier_id",
+          "label": "Supplier",
+          "type": "select",
+          "inTable": true,
+          "tableOrder": 3,
+          "tableField": "supplier_name",
+          "dataSource": {
+            "type": "api",
+            "resource": "supplier",
+            "select": ["supplier_id", "supplier_name"]
+          }
+        },
+        {
+          "name": "reference_number",
+          "label": "Reference Number",
+          "type": "text",
+          "maxlength": 50,
+          "placeholder": "PO/DN reference",
+          "textCase": "uppercase"
+        },
+        {
+          "name": "status",
+          "label": "Status",
+          "type": "select",
+          "inTable": true,
+          "tableOrder": 6,
+          "defaultValue": "draft",
+          "dataSource": {
+            "type": "static",
+            "options": [
+              { "value": "draft", "text": "Draft", "badge": "badge-secondary" },
+              { "value": "confirmed", "text": "Confirmed", "badge": "badge-success" },
+              { "value": "cancelled", "text": "Cancelled", "badge": "badge-danger" }
+            ]
+          }
+        },
+        {
+          "name": "total_items",
+          "label": "Items",
+          "type": "number",
+          "inTable": true,
+          "tableOrder": 4
+        },
+        {
+          "name": "total_amount",
+          "label": "Total Amount",
+          "type": "number",
+          "inTable": true,
+          "tableOrder": 5,
+          "format": "currency"
+        },
+        {
+          "name": "notes",
+          "label": "Notes",
+          "type": "textarea",
+          "rows": 2,
+          "maxlength": 500,
+          "placeholder": "Additional notes..."
+        }
+      ],
+      "fieldRows": [
+        { "fields": ["inbound_number", "inbound_date"] },
+        { "fields": ["warehouse_id", "supplier_id"] },
+        { "fields": ["reference_number", "status"] },
+        { "fields": ["notes"] }
+      ],
+      "details": [
+        {
+          "detailId": "stock_inbound_item",
+          "detailTitle": "Detail Items",
+          "detailIcon": "package",
+          "primaryKey": "stock_inbound_item_id",
+          "fields": [
+            {
+              "name": "item_product_id",
+              "label": "Product",
+              "type": "select",
+              "width": "250px",
+              "required": true,
+              "dataSource": {
+                "type": "api",
+                "url": "item-product/lookup",
+                "select": ["item_product_id", "product_name"],
+                "lookupMode": "dynamic"
+              }
+            },
+            {
+              "name": "qty_received",
+              "label": "Qty",
+              "type": "number",
+              "required": true,
+              "min": 1,
+              "width": "90px"
+            },
+            {
+              "name": "uom",
+              "label": "UOM",
+              "type": "select",
+              "width": "120px",
+              "dataSource": {
+                "type": "static",
+                "options": [
+                  { "value": "pcs", "text": "Pcs" },
+                  { "value": "box", "text": "Box" },
+                  { "value": "kg", "text": "Kg" },
+                  { "value": "liter", "text": "Liter" },
+                  { "value": "meter", "text": "Meter" },
+                  { "value": "pack", "text": "Pack" },
+                  { "value": "set", "text": "Set" },
+                  { "value": "lusin", "text": "Lusin" }
+                ]
+              }
+            },
+            {
+              "name": "unit_price",
+              "label": "Unit Price",
+              "type": "number",
+              "min": 0,
+              "width": "170px",
+              "format": "number"
+            },
+            {
+              "name": "total_amount",
+              "label": "Subtotal",
+              "type": "number",
+              "readonly": true,
+              "width": "140px",
+              "format": "number",
+              "calculated": {
+                "formula": "qty_received * unit_price"
+              }
+            },
+            {
+              "name": "notes",
+              "label": "Notes",
+              "type": "text",
+              "maxlength": 200,
+              "placeholder": "Item notes"
+            }
+          ],
+          "summary": {
+            "totalItems": true,
+            "totalQtyField": "qty_received",
+            "grandTotalField": "total_amount"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{  
+  "widgets": [
+    {
+      "id": "outbound-city",
+      "query": "file:query/dashboard-outbound/outbound-city.sql"
+    },
+    {
+      "id": "outbound-statistics",
+      "query": "file:query/dashboard-outbound/outbound-statistics.sql"
+    },
+    {
+      "id": "outbound-this-months",
+      "queries": {
+        "value": "file:query/dashboard-outbound/outbound-this-months-value.sql",
+        "points": "file:query/dashboard-outbound/outbound-this-months-points.sql"
+      }
+    }
+  ]
+}

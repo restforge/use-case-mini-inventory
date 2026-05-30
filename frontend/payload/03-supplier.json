@@ -1,0 +1,122 @@
+{
+  "extends": "app-config.json",
+  "pages": [
+    {
+      "pageId": "supplier",
+      "pageTitle": "Master Supplier",
+      "pageSubject": "Supplier",
+      "pageSubtitle": "Kelola data supplier dan vendor",
+      "pageIcon": "people",
+      "apiPath": "supplier",
+      "primaryKey": "supplier_id",
+      "displayField": "supplier_name",
+      "editorType": "modal",
+      "modalSize": "mw-650px",
+      "features": {
+        "enableSearch": true,
+        "enableStatusFilter": true,
+        "statusFilter": {
+          "field": "is_active",
+          "label": "Status",
+          "width": "150px",
+          "options": [
+            {"value": "true", "text": "Active"},
+            {"value": "false", "text": "Inactive"}
+          ]
+        },
+        "fieldLayout": "vertical"
+      },
+      "fields": [
+        {
+          "name": "supplier_code",
+          "label": "Kode Supplier",
+          "type": "text",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 1,
+          "maxlength": 20,
+          "placeholder": "SUP001"
+        },
+        {
+          "name": "supplier_name",
+          "label": "Nama Supplier",
+          "type": "text",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 2,
+          "maxlength": 255,
+          "placeholder": "Masukkan nama supplier"
+        },
+        {
+          "name": "contact_person",
+          "label": "Contact Person",
+          "type": "text",
+          "inTable": true,
+          "tableOrder": 3,
+          "maxlength": 100,
+          "placeholder": "Nama kontak"
+        },
+        {
+          "name": "phone",
+          "label": "Telepon",
+          "type": "text",
+          "maxlength": 20,
+          "placeholder": "021-12345678"
+        },
+        {
+          "name": "email",
+          "label": "Email",
+          "type": "text",
+          "inTable": true,
+          "tableOrder": 4,
+          "maxlength": 100,
+          "placeholder": "email@supplier.com"
+        },
+        {
+          "name": "address",
+          "label": "Alamat",
+          "type": "textarea",
+          "rows": 3,
+          "placeholder": "Alamat lengkap supplier"
+        },
+        {
+          "name": "city",
+          "label": "Kota",
+          "type": "text",
+          "inTable": true,
+          "tableOrder": 5,
+          "maxlength": 100,
+          "placeholder": "Nama kota"
+        },
+        {
+          "name": "country",
+          "label": "Negara",
+          "type": "text",
+          "maxlength": 100,
+          "defaultValue": "INDONESIA",
+          "placeholder": "Nama negara"
+        },
+        {
+          "name": "is_active",
+          "label": "Status",
+          "type": "checkbox",
+          "inTable": true,
+          "tableOrder": 6,
+          "defaultValue": true,
+          "checkboxText": {
+            "checked": "Active",
+            "unchecked": "Inactive"
+          }
+        }
+      ],
+      "fieldRows": [
+        { "fields": ["supplier_code", "supplier_name"] },
+        { "fields": ["contact_person", "phone"] },
+        { "fields": ["address"] },
+        { "fields": ["email", "city"] },
+        { "fields": ["country", "is_active"] }
+        
+      ]
+    }
+  ]
+}

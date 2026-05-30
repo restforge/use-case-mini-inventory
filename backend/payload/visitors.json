@@ -1,0 +1,39 @@
+{
+    "tableName": "visitors",
+    "primaryKey": "id",
+	"auditColumns": false,
+    "fieldName": [
+        "id",
+        "name",
+        "email",
+        "phone"
+    ],
+    "datatablesQuery": "file:query/visitors-datatables.sql",
+    "datatablesWhere": [
+        "id",
+        "name",
+        "email",
+        "phone",
+        "all"
+    ],
+    "action": {
+        "datatables": true,
+        "create": true,
+        "update": true,
+        "delete": true,
+        "first": true,
+        "lookup": true,
+        "read": true
+    },
+    "fieldValidation": [
+        {
+            "name": "id",
+            "type": "string",
+            "constraints": {
+                "primaryKey": true,
+                "autoGenerate": true,
+                "required": true
+            }
+        }
+    ]
+}

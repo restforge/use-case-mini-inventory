@@ -1,0 +1,251 @@
+{
+  "extends": "app-config.json",
+  "page": {
+    "pageId": "dashboard",
+    "pageTitle": "Dashboard",
+    "pageSubtitle": "Ringkasan kinerja toko (centralized)",
+    "pageIcon": "chart-simple",
+    "dataSources": {
+      "main": { "url": "data/dashboard-aggregate.json" }
+    },
+    "rows": [
+      {
+        "gap": "g-5 g-xl-8",
+        "columns": [
+          {
+            "colSpan": { "base": 12, "md": 6, "xxl": 3 },
+            "widgets": [
+              {
+                "widgetId": "expected_earnings",
+                "widgetType": "donut",
+                "title": "Expected Earnings",
+                "subtitle": null,
+                "dataSource": "main",
+                "chart": {
+                  "size": 110,
+                  "donutSize": "62%",
+                  "strokeWidth": 2,
+                  "colors": ["#F1416C", "#3E97FF", "#E4E6EF"]
+                },
+                "display": {
+                  "badgeColor": "success",
+                  "trendIcon": "arrow-up",
+                  "valuePrefix": "$"
+                }
+              },
+              {
+                "widgetId": "orders_this_month",
+                "widgetType": "progress",
+                "title": "Orders This Month",
+                "subtitle": null,
+                "dataSource": "main",
+                "display": {
+                  "badgeColor": "danger",
+                  "trendIcon": "arrow-down",
+                  "valuePrefix": "",
+                  "progressColor": "success",
+                  "goalLabel": "to Goal"
+                }
+              }
+            ]
+          },
+          {
+            "colSpan": { "base": 12, "md": 6, "xxl": 3 },
+            "widgets": [
+              {
+                "widgetId": "average_daily_sales",
+                "widgetType": "mini-bar",
+                "title": "Average Daily Sales",
+                "subtitle": null,
+                "dataSource": "main",
+                "chart": {
+                  "height": 80,
+                  "columnWidth": "55%",
+                  "color": "#3E97FF"
+                },
+                "display": {
+                  "badgeColor": "success",
+                  "trendIcon": "arrow-up",
+                  "valuePrefix": "$"
+                }
+              },
+              {
+                "widgetId": "new_customers_this_month",
+                "widgetType": "list",
+                "title": "New Customers This Month",
+                "subtitle": null,
+                "dataSource": "main",
+                "display": {
+                  "layout": "simple",
+                  "valuePrefix": "",
+                  "listTitle": "Today's Heroes",
+                  "bulletColor": "primary"
+                }
+              }
+            ]
+          },
+          {
+            "colSpan": { "base": 12, "xxl": 6 },
+            "widgets": [
+              {
+                "widgetId": "sales_this_months",
+                "widgetType": "area",
+                "title": "Sales This Months",
+                "subtitle": "Users from all channels",
+                "dataSource": "main",
+                "chart": {
+                  "height": 300,
+                  "color": "#50CD89",
+                  "smooth": true,
+                  "fillType": "gradient",
+                  "yAxisPrefix": "$"
+                },
+                "display": {
+                  "showKebab": true,
+                  "valuePrefix": "$",
+                  "goalAmount": 62440
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "gap": "g-5 g-xl-8",
+        "columns": [
+          {
+            "colSpan": { "base": 12, "md": 6 },
+            "widgets": [
+              {
+                "widgetId": "performance",
+                "widgetType": "donut",
+                "title": "Performance",
+                "subtitle": "1,046 Inbound Calls today",
+                "dataSource": "main",
+                "chart": {
+                  "size": 150,
+                  "donutSize": "65%",
+                  "strokeWidth": 0,
+                  "tooltipSuffix": "%"
+                },
+                "display": {
+                  "layout": "summary",
+                  "badgeColor": "danger",
+                  "trendIcon": "arrow-down",
+                  "valueSuffix": "%"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "gap": "g-5 g-xl-8",
+        "columns": [
+          {
+            "colSpan": { "base": 12, "md": 6 },
+            "widgets": [
+              {
+                "widgetId": "author_sales",
+                "widgetType": "bar",
+                "title": "Author Sales",
+                "subtitle": "Statistics by Countries",
+                "dataSource": "main",
+                "chart": {
+                  "library": "amcharts",
+                  "height": 350,
+                  "color": "#3E97FF",
+                  "orientation": "vertical",
+                  "borderRadius": 6
+                },
+                "display": {
+                  "actionButton": {
+                    "label": "PDF Report",
+                    "href": "#"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "colSpan": { "base": 12, "md": 6 },
+            "widgets": [
+              {
+                "widgetId": "learn_activity",
+                "widgetType": "bar",
+                "title": "Learn Activity",
+                "subtitle": "Hours per course",
+                "dataSource": "main",
+                "chart": {
+                  "height": 325,
+                  "color": "#3E97FF",
+                  "columnWidth": "28%",
+                  "borderRadius": 5,
+                  "yAxisSuffix": "H",
+                  "showDataLabels": true,
+                  "tooltipSuffix": " hours"
+                },
+                "display": {
+                  "showDateRange": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "gap": "g-5 g-xl-8",
+        "columns": [
+          {
+            "colSpan": { "base": 12, "md": 8 },
+            "widgets": [
+              {
+                "widgetId": "sales_statistics",
+                "widgetType": "pie",
+                "title": "Sales Statistics",
+                "subtitle": "Top Selling Products",
+                "dataSource": "main",
+                "chart": {
+                  "shape": "semi-donut",
+                  "innerRadius": "50%",
+                  "cornerRadius": 5,
+                  "height": 400,
+                  "labelFontSize": 13
+                },
+                "display": {
+                  "showKebab": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "gap": "g-5 g-xl-8",
+        "columns": [
+          {
+            "colSpan": { "base": 12, "md": 6, "xl": 4 },
+            "widgets": [
+              {
+                "widgetId": "visits_by_source",
+                "widgetType": "list",
+                "title": "Visits by Source",
+                "subtitle": "29.4k visitors",
+                "dataSource": "main",
+                "display": {
+                  "layout": "detail",
+                  "showKebab": true,
+                  "footerLink": {
+                    "label": "View Store Analytics",
+                    "icon": "arrow-right",
+                    "href": "#"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

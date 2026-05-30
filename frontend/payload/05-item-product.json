@@ -1,0 +1,234 @@
+{
+  "extends": "app-config.json",
+  "pages": [
+    {
+      "pageId": "item-product",
+      "pageTitle": "Master Item Product",
+      "pageSubject": "Item Product",
+      "pageSubtitle": "Kelola data produk dan inventori",
+      "pageIcon": "package",
+      "apiPath": "item-product",
+      "primaryKey": "item_product_id",
+      "displayField": "product_name",
+      "features": {
+        "duplicateAllowed": true,
+        "enableSearch": true,
+        "enableStatusFilter": true,
+        "statusFilter": {
+          "field": "is_active",
+          "label": "Status",
+          "width": "125px",
+          "options": [
+            {"value": "true", "text": "Active"},
+            {"value": "false", "text": "Inactive"}
+          ]
+        },
+        "fieldLayout": "vertical",
+        "enableDataFilter": true,
+        "dataFilters": [
+          {
+            "name": "category_id",
+            "field": "category_id",
+            "label": "Kategori",
+            "width": "350px",
+            "display": "dropdown",
+            "dataSource": {
+              "type": "api",
+              "resource": "category",
+              "select": ["category_id", "category_name"]
+            }
+          }
+        ]
+      },
+      "fields": [
+        {
+          "name": "product_code",
+          "label": "Kode Produk",
+          "type": "text",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 1,
+          "maxlength": 20,
+          "placeholder": "PRD-0001",
+          "unique": true,
+          "textCase": "uppercase"
+        },
+        {
+          "name": "sku",
+          "label": "SKU",
+          "type": "text",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 2,
+          "maxlength": 20,
+          "placeholder": "SKU0000000001",
+          "textCase": "uppercase"
+        },
+        {
+          "name": "product_name",
+          "label": "Nama Produk",
+          "type": "text",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 3,
+          "maxlength": 100,
+          "placeholder": "Masukkan nama produk",
+          "textCase": "initcap"
+        },
+        {
+          "name": "category_id",
+          "label": "Kategori",
+          "type": "select",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 4,
+          "tableField": "category_name",
+          "defaultValue": {
+            "value": "a1000000-0000-4000-8000-000000000001",
+            "text": "Elektronik"
+          },
+          "dataSource": {
+            "type": "api",
+            "resource": "category",
+            "select": ["category_id", "category_name"]
+          }
+        },
+        {
+          "name": "brand",
+          "label": "Merek",
+          "type": "text",
+          "maxlength": 50,
+          "placeholder": "Nama merek"
+        },
+        {
+          "name": "description",
+          "label": "Deskripsi",
+          "type": "textarea",
+          "rows": 3,
+          "maxlength": 500,
+          "placeholder": "Deskripsi produk"
+        },
+        {
+          "name": "purchase_price",
+          "label": "Harga Beli",
+          "type": "number",
+          "min": 0,
+          "placeholder": "0",
+          "format": "currency"
+        },
+        {
+          "name": "selling_price",
+          "label": "Harga Jual",
+          "type": "number",
+          "inTable": true,
+          "tableOrder": 5,
+          "min": 0,
+          "placeholder": "0",
+          "format": "currency"
+        },
+        {
+          "name": "stock",
+          "label": "Stok",
+          "type": "number",
+          "inTable": true,
+          "tableOrder": 6,
+          "min": 0,
+          "defaultValue": 0,
+          "placeholder": "0"
+        },
+        {
+          "name": "min_stock",
+          "label": "Stok Minimum",
+          "type": "number",
+          "min": 0,
+          "defaultValue": 10,
+          "placeholder": "0"
+        },
+        {
+          "name": "uom",
+          "label": "Satuan",
+          "type": "select",
+          "inTable": true,
+          "tableOrder": 7,
+          "defaultValue": "pcs",
+          "dataSource": {
+            "type": "static",
+            "options": [
+              { "value": "pcs", "text": "Pcs" },
+              { "value": "box", "text": "Box" },
+              { "value": "kg", "text": "Kg" },
+              { "value": "liter", "text": "Liter" },
+              { "value": "meter", "text": "Meter" },
+              { "value": "pack", "text": "Pack" },
+              { "value": "set", "text": "Set" },
+              { "value": "lusin", "text": "Lusin" }
+            ]
+          }
+        },
+        {
+          "name": "weight",
+          "label": "Berat (gram)",
+          "type": "number",
+          "min": 0,
+          "placeholder": "0"
+        },
+        {
+          "name": "is_active",
+          "label": "Status",
+          "type": "checkbox",
+          "inTable": true,
+          "tableOrder": 8,
+          "defaultValue": true,
+          "checkboxText": {
+            "checked": "Active",
+            "unchecked": "Inactive"
+          }
+        },
+        {
+          "name": "show_in_store",
+          "label": "Tampil di Store",
+          "type": "checkbox",
+          "defaultValue": true,
+          "checkboxText": {
+            "checked": "Ya",
+            "unchecked": "Tidak"
+          }
+        },
+        {
+          "name": "barcode",
+          "label": "Barcode",
+          "type": "text",
+          "maxlength": 20,
+          "placeholder": "Nomor barcode"
+        },
+        {
+          "name": "shelf_location",
+          "label": "Lokasi Rak",
+          "type": "text",
+          "maxlength": 20,
+          "placeholder": "A1-01"
+        },
+        {
+          "name": "notes",
+          "label": "Catatan",
+          "type": "textarea",
+          "rows": 3,
+          "maxlength": 500,
+          "placeholder": "Catatan internal produk"
+        }
+      ],
+      "fieldRows": [
+        { "fields": ["product_code", "sku"] },
+        { "fields": ["product_name", "category_id"] },
+        { "fields": ["brand", "uom"] },
+        { "fields": ["purchase_price", "selling_price"] },
+        { "fields": ["stock", "min_stock"] },
+        { "fields": ["weight", "barcode"] },
+        { "fields": ["shelf_location"] },
+        { "fields": ["is_active", "show_in_store"] },
+        { "fields": ["description"] },
+        { "fields": ["notes"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "extends": "app-config.json",
+  "pages": [
+    {
+      "pageId": "dashboard-outbound",
+      "pageType": "dashboard",
+      "pageTitle": "Dashboard Outbound",
+      "pageSubtitle": "Ringkasan transaksi outbound tahun ini",
+      "pageIcon": "chart-pie-simple",
+      "dataSources": {
+        "main": {
+          "url": "http://127.0.0.1:3032/api/mini-inventory/dash-outbound/dashboard",
+          "method": "POST",
+          "body": {}
+        }
+      },
+      "rows": [
+        {
+          "gap": "g-5 g-xl-8",
+          "columns": [
+            {
+              "colSpan": { "base": 12, "md": 6 },
+              "widgets": [
+                {
+                  "widgetId": "outbound-city",
+                  "widgetType": "bar",
+                  "chartEngine": "amcharts",
+                  "title": "Outbound per Kota",
+                  "subtitle": "Total nilai outbound per kota tujuan",
+                  "dataSource": "main",
+                  "chart": {
+                    "height": 350,
+                    "color": "#3E97FF",
+                    "borderRadius": 6,
+                    "xField": "category",
+                    "yField": "value",
+                    "format": {
+                      "yAxis":     { "decimalPlaces": 2 },
+                      "xAxis":     { "decimalPlaces": 2 },
+                      "tooltip":   { "decimalPlaces": 2, "prefix": "Rp " },
+                      "dataLabel": { "decimalPlaces": 2 }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "colSpan": { "base": 12, "md": 6 },
+              "widgets": [
+                {
+                  "widgetId": "outbound-statistics",
+                  "widgetType": "pie",
+                  "chartEngine": "amcharts",
+                  "title": "Top Item Outbound",
+                  "subtitle": "Item terlaris tahun ini",
+                  "dataSource": "main",
+                  "chart": {
+                    "shape": "pie",
+                    "innerRadius": "50%",
+                    "cornerRadius": 5,
+                    "height": 400,
+                    "labelFontSize": 13,
+                    "colors": ["#3E97FF", "#7239EA", "#5C5CCC", "#7C5CCC", "#A45CCC", "#CC5CCC"],
+                    "xField": "label",
+                    "yField": "value"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gap": "g-5 g-xl-8",
+          "columns": [
+            {
+              "colSpan": { "base": 12 },
+              "widgets": [
+                {
+                  "widgetId": "outbound-this-months",
+                  "widgetType": "area",
+                  "chartEngine": "apexcharts",
+                  "title": "Outbound Tahun Ini",
+                  "subtitle": "Tren bulanan total nilai outbound",
+                  "dataSource": "main",
+                  "chart": {
+                    "height": 300,
+                    "color": "#50CD89",
+                    "smooth": true,
+                    "fillType": "gradient",
+                    "xField": "period",
+                    "yField": "value",
+                    "format": {
+                      "yAxis":   { "decimalPlaces": 0, "prefix": "Rp " },
+                      "tooltip": { "decimalPlaces": 2, "prefix": "Rp " }
+                    }
+                  },
+                  "display": {
+                    "valuePrefix": "Rp ",
+                    "showTotalHeader": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

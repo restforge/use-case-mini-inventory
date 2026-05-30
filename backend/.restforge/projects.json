@@ -1,0 +1,19 @@
+{
+  "projects": {
+    "mini-inventory": {
+      "database": "postgres",
+      "createdAt": "2026-05-29T23:37:55.013Z",
+      "endpoints": [
+        "category",
+        "warehouse",
+        "supplier",
+        "customer",
+        "item-product",
+        "stock-inbound",
+        "stock-outbound",
+        "dash-inbound",
+        "dash-outbound"
+      ]
+    }
+  }
+}

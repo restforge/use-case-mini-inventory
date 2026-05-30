@@ -1,0 +1,56 @@
+{
+    "tableName": "supplier",
+    "primaryKey": "supplier_id",
+    "fieldName": [
+        "supplier_id",
+        "supplier_code",
+        "supplier_name",
+        "contact_person",
+        "phone",
+        "email",
+        "address",
+        "city",
+        "country",
+        "is_active"
+    ],
+    "fieldValidation": [
+        {
+            "name": "supplier_id",
+            "type": "string",
+            "constraints": {
+                "primaryKey": true,
+                "autoGenerate": true,
+                "required": true
+            }
+        }        
+    ],
+    "fieldNameLookup": {
+        "id": "supplier_id",
+        "text": "supplier_name"
+    },
+    "datatablesQuery": "file:query/supplier-datatables.sql",
+    "datatablesWhere": [
+        "supplier_code",
+        "supplier_name",
+        "contact_person",
+        "phone",
+        "email",        
+        "all"
+    ],
+    "action": {
+        "datatables": true,
+        "create": true,
+        "update": true,
+        "delete": true,
+        "first": true,
+        "lookup": true,
+        "read": true,
+        "export": false,
+        "import": false,
+        "adjust": false,
+        "aggregate": false,
+        "createComposite": false,
+        "updateComposite": false,
+        "readComposite": false
+    }
+}

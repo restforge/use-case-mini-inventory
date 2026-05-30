@@ -1,0 +1,56 @@
+{
+    "tableName": "category",
+    "primaryKey": "category_id",
+    "fieldName": [
+        "category_id",
+        "category_code",
+        "category_name",
+        "description",
+        "is_active"
+    ],
+    "fieldValidation": [
+        {
+            "name": "category_id",
+            "type": "string",
+            "constraints": {
+                "primaryKey": true,
+                "autoGenerate": true,
+                "required": true
+            }
+        },
+        {
+            "name": "category_code",
+            "type": "string",
+            "constraints": {
+                "uppercase": true
+            }
+        }
+    ],
+    "fieldNameLookup": {
+        "id": "category_id",
+        "text": "category_code||' - '||category_name as display_text"
+    },
+    "datatablesQuery": "file:query/category-datatables.sql",
+    "datatablesWhere": [
+        "category_code",
+        "category_name",
+        "description",
+        "all"
+    ],
+    "action": {
+        "datatables": true,
+        "create": true,
+        "update": true,
+        "delete": true,
+        "first": true,
+        "lookup": true,
+        "read": true,
+        "export": false,
+        "import": false,
+        "adjust": false,
+        "aggregate": false,
+        "createComposite": false,
+        "updateComposite": false,
+        "readComposite": false
+    }
+}

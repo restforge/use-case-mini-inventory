@@ -1,0 +1,13 @@
+{
+  "extends": "app-config.json",
+  "pages": [
+    { "include": "01-category.json" },
+    { "include": "02-warehouse.json" },
+    { "include": "03-supplier.json" },
+    { "include": "04-customer.json" },
+    { "include": "05-item-product.json" },
+    { "include": "06-stock-inbound.json" },
+    { "include": "07-stock-outbound.json" },
+    { "include": "dashboard-outbound.json" }
+  ]
+}

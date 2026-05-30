@@ -1,0 +1,59 @@
+{
+    "tableName": "sales_order",
+    "primaryKey": "sales_order_id",
+    "fieldName": [
+        "sales_order_id",
+        "tanggal",
+        "sales_number",
+        "customer_id"
+    ],
+    "action": {
+        "datatables": true,
+        "create": true,
+        "update": true,
+        "delete": true,
+        "first": true,
+        "lookup": true,
+        "read": true
+    },
+    "datatablesQuery": "SELECT sales_order_id, tanggal, sales_number, customer_id FROM sales_order",
+    "datatablesWhere": [
+        "sales_number",
+        "all"
+    ],
+    "fieldValidation": [
+        {
+            "name": "sales_order_id",
+            "type": "uuid",
+            "constraints": {
+                "primaryKey": true,
+                "autoGenerate": true
+            }
+        },
+        {
+            "name": "tanggal",
+            "type": "date",
+            "constraints": {
+                "required": true
+            }
+        },
+        {
+            "name": "sales_number",
+            "type": "string",
+            "constraints": {
+                "required": true,
+                "unique": true,
+                "maxLength": 50,
+                "trim": true,
+                "uppercase": true
+            }
+        },
+        {
+            "name": "customer_id",
+            "type": "uuid",
+            "constraints": {
+                "required": true
+            }
+        }
+    ]
+}

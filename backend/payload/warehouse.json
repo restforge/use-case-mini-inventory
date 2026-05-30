@@ -1,0 +1,59 @@
+{
+    "tableName": "warehouse",
+    "primaryKey": "warehouse_id",
+    "fieldName": [
+        "warehouse_id",
+        "warehouse_code",
+        "warehouse_name",
+        "warehouse_type",
+        "address",
+        "city",
+        "capacity",
+        "is_active"
+    ],
+    "fieldValidation": [
+        {
+            "name": "warehouse_id",
+            "type": "string",
+            "constraints": {
+                "primaryKey": true,
+                "autoGenerate": true,
+                "required": true
+            }
+        },
+        {
+            "name": "capacity",
+            "type": "number",
+            "constraints": {
+                "precision": 2
+            }
+        }        
+    ],
+    "fieldNameLookup": {
+        "id": "warehouse_id",
+        "text": "warehouse_name"
+    },
+    "datatablesQuery": "file:query/warehouse-datatables.sql",
+    "datatablesWhere": [
+        "warehouse_code",
+        "warehouse_name",
+        "warehouse_type",
+        "all"
+    ],
+    "action": {
+        "datatables": true,
+        "create": true,
+        "update": true,
+        "delete": true,
+        "first": true,
+        "lookup": true,
+        "read": true,
+        "export": false,
+        "import": false,
+        "adjust": false,
+        "aggregate": false,
+        "createComposite": false,
+        "updateComposite": false,
+        "readComposite": false
+    }
+}

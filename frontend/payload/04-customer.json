@@ -1,0 +1,121 @@
+{
+  "extends": "app-config.json",
+  "pages": [
+    {
+      "pageId": "customer",
+      "pageTitle": "Master Customer",
+      "pageSubject": "Customer",
+      "pageSubtitle": "Kelola data pelanggan",
+      "pageIcon": "book",
+      "apiPath": "customer",
+      "primaryKey": "customer_id",
+      "displayField": "customer_name",
+      "editorType": "modal",
+      "modalSize": "mw-650px",
+      "features": {
+        "enableSearch": true,
+        "enableStatusFilter": true,
+        "statusFilter": {
+          "field": "is_active",
+          "label": "Status",
+          "width": "150px",
+          "options": [
+            {"value": "true", "text": "Active"},
+            {"value": "false", "text": "Inactive"}
+          ]
+        },
+        "fieldLayout": "vertical"
+      },
+      "fields": [
+        {
+          "name": "customer_code",
+          "label": "Kode Customer",
+          "type": "text",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 1,
+          "maxlength": 20,
+          "placeholder": "CST001"
+        },
+        {
+          "name": "customer_name",
+          "label": "Nama Customer",
+          "type": "text",
+          "required": true,
+          "inTable": true,
+          "tableOrder": 2,
+          "maxlength": 255,
+          "placeholder": "Masukkan nama customer"
+        },
+        {
+          "name": "contact_person",
+          "label": "Contact Person",
+          "type": "text",
+          "inTable": true,
+          "tableOrder": 3,
+          "maxlength": 100,
+          "placeholder": "Nama kontak"
+        },
+        {
+          "name": "phone",
+          "label": "Telepon",
+          "type": "text",
+          "maxlength": 20,
+          "placeholder": "021-12345678"
+        },
+        {
+          "name": "email",
+          "label": "Email",
+          "type": "text",
+          "inTable": true,
+          "tableOrder": 4,
+          "maxlength": 100,
+          "placeholder": "email@customer.com"
+        },
+        {
+          "name": "address",
+          "label": "Alamat",
+          "type": "textarea",
+          "rows": 3,
+          "placeholder": "Alamat lengkap customer"
+        },
+        {
+          "name": "city",
+          "label": "Kota",
+          "type": "text",
+          "inTable": true,
+          "tableOrder": 5,
+          "maxlength": 100,
+          "placeholder": "Nama kota"
+        },
+        {
+          "name": "country",
+          "label": "Negara",
+          "type": "text",
+          "maxlength": 100,
+          "defaultValue": "INDONESIA",
+          "placeholder": "Nama negara"
+        },
+        {
+          "name": "is_active",
+          "label": "Status",
+          "type": "checkbox",
+          "inTable": true,
+          "tableOrder": 6,
+          "defaultValue": true,
+          "checkboxText": {
+            "checked": "Active",
+            "unchecked": "Inactive"
+          }
+        }
+      ],
+      "fieldRows": [
+        { "fields": ["customer_code", "customer_name"] },
+        { "fields": ["contact_person", "phone"] },
+        { "fields": ["email", "city"] },
+        { "fields": ["country", "is_active"] },
+        { "fields": ["address"] }
+      ]
+    }
+  ]
+}
