@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 :: ==========================================================
-::  AppForge Generate Menu - Mini Inventory
+::  RESTForge Designer Generate Menu - Mini Inventory
 ::  Generate halaman per payload secara interaktif.
 ::
 ::  Cara pakai:
@@ -15,13 +15,10 @@ setlocal enabledelayedexpansion
 :: ==========================================================
 
 :: ----------------------------------------------------------
-::  Konfigurasi command appforge
-::  - Default: pakai binary installer (`appforge` di PATH)
-::  - Switch ke source code dengan UNCOMMENT baris kedua
-::    (misal saat testing fitur development yang belum di-build)
+::  Konfigurasi command restforge-designer
+::  - Default: pakai binary installer (`restforge-designer` di PATH)
 :: ----------------------------------------------------------
-set "APPFORGE=appforge"
-:: set "APPFORGE=python D:/workspace/03_projects/app-framework/appforge.py"
+set "DESIGNER=restforge-designer"
 
 set "PAYLOAD_DIR=payload"
 set "OUTPUT_DIR=./mini-inventory"
@@ -33,7 +30,7 @@ set "PLUGIN=vanilla-js-auth"
 set "APP_NAME=Mini Inventory"
 set "APP_CODE=mini-inventory"
 set "API_BASE_URL=http://localhost:3032/api/mini-inventory"
-set "PORT=3000"
+set "PORT=8000"
 
 :: Pindah ke folder script supaya path relative bekerja
 cd /d "%~dp0"
@@ -42,12 +39,12 @@ cd /d "%~dp0"
 cls
 echo.
 echo ============================================
-echo  AppForge Generate - Mini Inventory
+echo  RESTForge Designer Generate - Mini Inventory
 echo ============================================
-echo  Command : %APPFORGE%
+echo  Command : %DESIGNER%
 echo  Payload : %PAYLOAD_DIR%
 echo  Output  : %OUTPUT_DIR%
-echo  Run     : cd mini-inventory ^&^& npx serve . -l 3000
+echo  Run     : cd mini-inventory ^&^& app-start.bat
 echo ============================================
 echo.
 echo  Setup (jalankan sekali di awal):
@@ -112,9 +109,9 @@ if /i not "%confirm%"=="Y" (
     goto :after_action
 )
 echo.
-echo ^> %APPFORGE% init --plugin "%PLUGIN%" --output "%OUTPUT_DIR%" --app-name "%APP_NAME%" --app-code "%APP_CODE%" --api-base-url "%API_BASE_URL%" --port %PORT% --overwrite
+echo ^> %DESIGNER% init --plugin "%PLUGIN%" --output "%OUTPUT_DIR%" --app-name "%APP_NAME%" --app-code "%APP_CODE%" --api-base-url "%API_BASE_URL%" --port %PORT% --overwrite
 echo.
-%APPFORGE% init --plugin "%PLUGIN%" --output "%OUTPUT_DIR%" --app-name "%APP_NAME%" --app-code "%APP_CODE%" --api-base-url "%API_BASE_URL%" --port %PORT% --overwrite
+%DESIGNER% init --plugin "%PLUGIN%" --output "%OUTPUT_DIR%" --app-name "%APP_NAME%" --app-code "%APP_CODE%" --api-base-url "%API_BASE_URL%" --port %PORT% --overwrite
 goto :after_action
 
 :do_category
@@ -153,9 +150,9 @@ goto :after_action
 echo.
 echo --- Generate: all-pages.json (scope=app) ---
 echo.
-echo ^> %APPFORGE% generate --payload "%PAYLOAD_DIR%/all-pages.json" --output "%OUTPUT_DIR%" --overwrite
+echo ^> %DESIGNER% generate --payload "%PAYLOAD_DIR%/all-pages.json" --output "%OUTPUT_DIR%" --overwrite
 echo.
-%APPFORGE% generate --payload "%PAYLOAD_DIR%/all-pages.json" --output "%OUTPUT_DIR%" --overwrite
+%DESIGNER% generate --payload "%PAYLOAD_DIR%/all-pages.json" --output "%OUTPUT_DIR%" --overwrite
 goto :after_action
 
 :do_validate
@@ -167,9 +164,9 @@ for %%F in (
 ) do (
     echo.
     echo === %%F.json ===
-    echo ^> %APPFORGE% validate --payload "%PAYLOAD_DIR%/%%F.json"
+    echo ^> %DESIGNER% validate --payload "%PAYLOAD_DIR%/%%F.json"
     echo.
-    %APPFORGE% validate --payload "%PAYLOAD_DIR%/%%F.json"
+    %DESIGNER% validate --payload "%PAYLOAD_DIR%/%%F.json"
 )
 goto :after_action
 
@@ -181,13 +178,13 @@ goto :menu
 
 :: ----------------------------------------------------------
 ::  Subroutine: gen <payload-prefix> <page-id>
-::  Memanggil: appforge generate --payload <prefix>.json --scope form --page <pageId>
+::  Memanggil: restforge-designer generate --payload <prefix>.json --scope form --page <pageId>
 :: ----------------------------------------------------------
 :gen
 echo.
 echo --- Generate: %~1 (page: %~2) ---
 echo.
-echo ^> %APPFORGE% generate --payload "%PAYLOAD_DIR%/%~1.json" --output "%OUTPUT_DIR%" --scope form --page "%~2" --overwrite
+echo ^> %DESIGNER% generate --payload "%PAYLOAD_DIR%/%~1.json" --output "%OUTPUT_DIR%" --scope form --page "%~2" --overwrite
 echo.
-%APPFORGE% generate --payload "%PAYLOAD_DIR%/%~1.json" --output "%OUTPUT_DIR%" --scope form --page "%~2" --overwrite
+%DESIGNER% generate --payload "%PAYLOAD_DIR%/%~1.json" --output "%OUTPUT_DIR%" --scope form --page "%~2" --overwrite
 exit /b 0
