@@ -63,14 +63,41 @@
   },
   "navigation": {
     "items": [
-      { "pageRef": "category", "label": "Category", "icon": "category" },
-      { "pageRef": "warehouse", "label": "Warehouse", "icon": "home-2" },
-      { "pageRef": "supplier", "label": "Supplier", "icon": "people" },
-      { "pageRef": "customer", "label": "Customer", "icon": "book" },
-      { "pageRef": "item-product", "label": "Item Product", "icon": "package" },
-      { "pageRef": "stock-inbound", "label": "Stock Inbound", "icon": "dropbox" },
-      { "pageRef": "stock-outbound", "label": "Stock Outbound", "icon": "exit-up" },
-      { "pageRef": "dashboard-outbound", "label": "Dashboard Outbound", "icon": "chart-pie-simple", "type": "page" }
+      {
+        "type": "group",
+        "label": "Master Data",
+        "icon": "notepad",
+        "children": [
+          { "type": "page", "pageRef": "category", "label": "Category" },
+          { "type": "page", "pageRef": "warehouse", "label": "Warehouse" }
+        ]
+      },
+      {
+        "type": "group",
+        "label": "Contacts",
+        "icon": "people",
+        "children": [
+          { "type": "page", "pageRef": "supplier", "label": "Supplier" },
+          { "type": "page", "pageRef": "customer", "label": "Customer" }
+        ]
+      },
+      {
+        "type": "group",
+        "label": "Products",
+        "icon": "package",
+        "children": [
+          { "type": "page", "pageRef": "item-product", "label": "Item Product" }
+        ]
+      },
+      {
+        "type": "group",
+        "label": "Transactions",
+        "icon": "dropbox",
+        "children": [
+          { "type": "page", "pageRef": "stock-inbound", "label": "Stock Inbound" },
+          { "type": "page", "pageRef": "stock-outbound", "label": "Stock Outbound" }
+        ]
+      }
     ]
   }
 }

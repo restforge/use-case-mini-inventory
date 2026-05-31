@@ -4,12 +4,14 @@
     "appCode": "mini-inventory",
     "plugin": "vanilla-js-auth",
     "apiBaseUrl": "http://localhost:3032/api/mini-inventory",
-    "port": 3000,
+    "port": 8000,
     "numberFormat": {
       "locale": "en-US",
-      "currencyPrefix": "Rp "
+      "currencyPrefix": "Rp ",
+      "decimalPlaces": 0
     }
   },
+  "homepage": "dashboard-outbound",
   "auth": {
     "appCode": "K5BK0H3ATT",
     "authApiUrl": "https://restforge.dev/api/auth",

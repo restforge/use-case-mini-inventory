@@ -4,10 +4,11 @@
     "appCode": "mini-inventory",
     "plugin": "vanilla-js-auth",
     "apiBaseUrl": "http://localhost:3032/api/mini-inventory",
-    "port": 3000,
+    "port": 8000,
     "numberFormat": {
       "locale": "en-US",
-      "currencyPrefix": "Rp "
+      "currencyPrefix": "Rp ",
+      "decimalPlaces": 0
     }
   },
   "auth": {
