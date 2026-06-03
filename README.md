@@ -52,7 +52,16 @@ Tersedia juga varian `mysql` dan `oracle` pada folder yang sama.
 
 ### Backend
 
-Dijalankan dari folder `backend/`:
+Dijalankan dari folder `backend/`.
+
+Sebelum menjalankan file bat, package `@restforgejs/platform` harus di-install
+terlebih dahulu:
+
+```bash
+npm install @restforgejs/platform
+```
+
+Setelah package terpasang, jalankan script berikut:
 
 | Perintah | Fungsi |
 |----------|--------|
@@ -60,26 +69,20 @@ Dijalankan dari folder `backend/`:
 | `dashboard-create.bat` | Generate 2 dashboard: dash-inbound, dash-outbound |
 | `server-start.bat` | Menjalankan API server dengan mode `--watch` pada port 3032 |
 
-Perintah inti yang dibungkus oleh script di atas:
-
-```bash
-npx restforge endpoint create --project=mini-inventory --name=<nama> --payload=<file>.json --config=db-connection.env
-npx restforge dashboard create --project=mini-inventory --name=<nama> --payload=<file>.json
-npx restforge serve --project=mini-inventory --config=db-connection.env --watch
-```
 
 ### Frontend
 
-Dijalankan dari folder `frontend/`:
+Dijalankan dari folder `frontend/`.
+
+Sebelum menjalankan file bat, RESTForge Designer harus di-install terlebih dahulu.
+Installer dapat di-download melalui link [RESTForge Designer](https://pub-6d440bd5fa9440ca8c94672e479dda36.r2.dev/restforge-designer-setup-latest-win64.exe).
+
+Setelah RESTForge Designer terpasang, jalankan script berikut:
 
 | Perintah | Fungsi |
 |----------|--------|
 | `create-all.bat` | Generate seluruh halaman sekaligus dari `payload/all-pages.json` (scope `app`) |
-| `generate.bat` | Menu interaktif: init project, generate per halaman, atau validate payload |
 
-Menu pada `generate.bat` mencakup pilihan: Init Project, master data (category, warehouse,
-supplier, customer, item-product), transaksi (stock-inbound, stock-outbound), dashboard,
-generate semua, dan validate semua payload.
 
 Menjalankan hasil generate frontend (memakai `app-start.bat` bawaan hasil generate,
 serve pada port 8000):
