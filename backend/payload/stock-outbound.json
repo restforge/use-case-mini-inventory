@@ -14,6 +14,16 @@
         "total_amount",
         "status"
     ],
+    "fieldValidation": [
+        {
+            "name": "stock_outbound_id",
+            "type": "string",
+            "constraints": {
+                "primaryKey": true,
+                "autoGenerate": true
+            }
+        }
+    ],
     "datatablesQuery": "file:query/stock-outbound-datatables.sql",
     "datatablesWhere": [
         "outbound_number",

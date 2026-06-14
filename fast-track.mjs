@@ -471,6 +471,10 @@ function main() {
     console.log(`\n  ✓ Browser dibuka: ${BROWSER_URL}`);
   }
   console.log();
+  console.log('  Login menggunakan kredensial berikut:');
+  console.log('    User     : admin.inv');
+  console.log('    Password : Admin@1234');
+  console.log();
 }
 
 main();
